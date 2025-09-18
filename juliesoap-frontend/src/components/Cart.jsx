@@ -42,12 +42,29 @@ const Cart = ({ isOpen, onClose, cartItems, onUpdateQuantity, onRemoveItem, onCh
       customer_phone: customerInfo.phone,
       delivery_address: customerInfo.address,
       notes: customerInfo.notes,
-      items: cartItems.map(item => ({
-        product: item.id,
-        quantity: item.quantity,
-        unit_price: item.is_wholesale_only ? item.carton_price : item.price
-      }))
+      items: cartItems.map(item => {
+        const unitPrice = parseFloat(item.is_wholesale_only ? item.carton_price : item.price);
+        return {
+          product: item.id,
+          quantity: item.quantity,
+          unit_price: unitPrice,
+          total_price: unitPrice * item.quantity
+        };
+      })
     };
+
+
+    // Validation supplémentaire
+    const hasInvalidItem = orderData.items.some(item =>
+      typeof item.product !== 'number' ||
+      typeof item.quantity !== 'number' ||
+      typeof item.unit_price !== 'number' ||
+      isNaN(item.product) || isNaN(item.quantity) || isNaN(item.unit_price)
+    );
+    if (hasInvalidItem) {
+      alert('Erreur: Un ou plusieurs articles du panier ont des valeurs invalides.');
+      return;
+    }
 
     onCheckout(orderData);
     setShowCheckout(false);
@@ -178,7 +195,7 @@ const Cart = ({ isOpen, onClose, cartItems, onUpdateQuantity, onRemoveItem, onCh
                       id="phone"
                       value={customerInfo.phone}
                       onChange={(e) => handleInputChange('phone', e.target.value)}
-                      placeholder="+228 XX XX XX XX"
+                      placeholder="+228 98732473"
                     />
                   </div>
                 </div>

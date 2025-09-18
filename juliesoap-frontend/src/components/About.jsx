@@ -1,7 +1,7 @@
 import React from 'react';
 import { Users, MapPin, Award, Heart } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
-import juliesoapLogo from '../assets/juliesoap_logo.jpeg';
+import juliesoapLogo from '../assets/kedagnifrancoise.png';
 
 const About = () => {
   return (

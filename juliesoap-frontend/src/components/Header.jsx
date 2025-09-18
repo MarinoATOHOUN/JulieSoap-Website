@@ -20,7 +20,7 @@ const Header = ({ cartItems = [], onCartClick }) => {
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               <Phone className="w-4 h-4" />
-              <span>+228 XX XX XX XX</span>
+              <span>+228 98 73 24 73</span>
             </div>
             <div className="flex items-center gap-2">
               <Mail className="w-4 h-4" />

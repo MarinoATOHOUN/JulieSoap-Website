@@ -1,0 +1,4 @@
+C'est quoi l'erreur ?
+
+Bad Request: /api/orders/create/
+[18/Aug/2025 13:37:08] "POST /api/orders/create/ HTTP/1.1" 400 55

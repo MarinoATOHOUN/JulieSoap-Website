@@ -10,9 +10,9 @@ class OrderCreateView(generics.CreateAPIView):
     
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
+        if not serializer.is_valid():
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         order = serializer.save()
-        
         # Retourner la commande créée avec tous les détails
         response_serializer = OrderSerializer(order)
         return Response(response_serializer.data, status=status.HTTP_201_CREATED)

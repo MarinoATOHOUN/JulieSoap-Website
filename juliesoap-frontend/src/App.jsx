@@ -26,7 +26,7 @@ function App() {
     });
     
     // Notification simple
-    alert(`${product.name} ajouté au panier !`);
+    // alert(`${product.name} ajouté au panier !`);
   };
 
   const updateCartQuantity = (productId, newQuantity) => {
