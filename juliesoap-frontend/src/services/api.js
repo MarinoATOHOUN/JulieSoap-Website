@@ -1,5 +1,5 @@
 // Configuration de l'API JulieSoap
-const API_BASE_URL = 'http://localhost:8000/api';
+const API_BASE_URL = 'https://jodeltobi224.pythonanywhere.com/api';
 
 class ApiService {
   // Méthode générique pour les requêtes
